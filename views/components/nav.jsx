@@ -6,7 +6,7 @@ const Nav = (props) =>
     <nav className="uk-navbar-container" data-uk-navbar>
     <div className="uk-navbar-left">
         <div className="uk-navbar-left">
-        <a className="uk-navbar-item uk-logo" href="/">NYT Scrapper</a>
+        <a className="uk-navbar-item uk-logo" href="/">NYT Scraper</a>
         <div>
             <ul className="uk-navbar-nav">
                 <li className={props.saved ? "" : "uk-active"}><a href="/">Home</a></li>
