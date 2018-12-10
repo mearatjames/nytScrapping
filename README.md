@@ -7,7 +7,7 @@
 
 - A simple web app dispalying latest technology news section scraped from NYT website
 
-Visit the deployed version [here] (https://still-castle-19414.herokuapp.com/)
+Visit the deployed version [here](https://still-castle-19414.herokuapp.com/)
 
 ## How it works
 
