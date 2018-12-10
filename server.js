@@ -3,9 +3,10 @@ const logger = require("morgan")
 const mongoose = require("mongoose")
 const path = require('path')
 
-
-const db = require("./models")
 let PORT = process.env.PORT || 3000
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytscrapping";
+
+mongoose.connect(MONGODB_URI);
 const app = express()
 
 app.use(logger("dev"))

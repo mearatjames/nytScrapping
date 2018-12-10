@@ -1,7 +1,6 @@
 const path = require('path')
 const axios = require("axios")
 const cheerio = require("cheerio")
-const mongoose = require('mongoose')
 const db = require('../models')
 
 module.exports = function(app) {
