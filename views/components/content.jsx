@@ -32,7 +32,7 @@ const Content = (props) =>
                 <div className="uk-modal-body">
                     <div id="noteList" className="uk-margin"></div>
                     <div className="uk-margin">
-                        <textarea id="note" class="uk-textarea" rows="5" placeholder="Input Notes Here"></textarea>
+                        <textarea id="note" className="uk-textarea" rows="5" placeholder="Input Notes Here"></textarea>
                     </div>
                 </div>
                 <div className="uk-modal-footer uk-text-right">
