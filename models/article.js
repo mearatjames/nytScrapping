@@ -24,10 +24,6 @@ let ArticleSchema = new Schema({
     },
     saved: {
         type: Boolean
-    },
-    note: {
-        type: Schema.Types.ObjectId,
-        ref: "Note"
     }
 })
 

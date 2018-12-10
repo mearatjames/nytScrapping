@@ -7,10 +7,11 @@ function getArticles() {
     fetch('/articles')
     .then(response => response.json())
     .then(data => {
+
+        if (data.length == 0) {
+            document.getElementById('alert').style.display = "block"
+        }
         for (i = 0; i < data.length; i++) {
-            if (data.length == 0) {
-                document.getElementById('alert').style.display = "block"
-            }
             if (i < 10) {
                 document.getElementById('alert').style.display = "none"
                 document.getElementById('articles').insertAdjacentHTML("afterbegin", `
@@ -30,7 +31,10 @@ function getArticles() {
                 </div>
                 <div class="uk-card-footer">
                     <a href=${data[i].link} class="uk-button uk-button-text">Read more</a>
-                    <button data-id=${data[i]._id} onclick="saveArticle(event)" class="uk-align-right uk-button uk-button-default">Save</button>
+                    ${data[i].saved == true ? 
+                        `<button disabled data-id=${data[i]._id} onclick="saveArticle(event)" class="uk-align-right uk-button uk-button-default">Saved!</button>` : 
+                        `<button data-id=${data[i]._id} onclick="saveArticle(event)" class="uk-align-right uk-button uk-button-default">Save</button>`
+                        }
                 </div>
                 </div>
                         `) 
@@ -40,7 +44,7 @@ function getArticles() {
 }
 
 document.getElementById('scrape').addEventListener('click', function() {
-    fetch('/scrape')
+    fetch('/scrape/')
     .then(response => getArticles())
     .catch(e => console.log(e))
 })

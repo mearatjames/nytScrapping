@@ -9,8 +9,6 @@ module.exports = function(app) {
         axios.get("https://www.nytimes.com/section/technology").then(function(response) {
         const $ = cheerio.load(response.data)
         let articlesArr = []
-        // console.log($('#stream-panel div ol li'))
-        // console.log($('section#stream-panel div:first-child ol li:first-child').html())
         $('section#stream-panel div:first-child ol li').each((i, elem) => {
             articlesArr.push({
                 link: `https://www.nytimes.com${$(elem).find('a').attr('href')}`,
@@ -18,10 +16,6 @@ module.exports = function(app) {
                 text: $(elem).children('div').children().children('a').children('p').text(),
                 image: $(elem).find('img').attr('src')
             })
-        // //    console.log("link " + $(elem).children('div').children().children('a').attr('href'))
-        //    console.log("Title " + $(elem).children('div').children().children('a').children('h2').text())
-        //    console.log("Text " + $(elem).children('div').children().children('a').children('p').text())
-
         })
         db.Article.create(articlesArr, function (err, data) {
             if (err) console.log(err)
@@ -43,6 +37,16 @@ module.exports = function(app) {
     app.delete('/articles', function(req, res) {
         db.Article.remove({})
         .then(function(result) {
+          return db.Note.remove({})
+        })
+        .then(function(response) {
+            res.sendStatus(200)
+        })
+    })
+
+    app.put('/articles/:id', function(req, res) {
+        db.Article.findOneAndUpdate({_id: req.params.id}, {saved: false})
+        .then(function(result) {
             res.sendStatus(200)
         })
     })
@@ -58,8 +62,30 @@ module.exports = function(app) {
     app.get('/api/savedarticles', function (req, res) {
         db.Article.find({saved: true})
         .then(function(savedArticles) {
-            console.log(savedArticles)
             res.json(savedArticles)
         })
+    })
+
+    app.get('/articles/:id', function (req, res) {
+        db.Note.find({article: req.params.id})
+        .then(function(note) {
+            res.json(note)
+        })
+    })
+
+    app.post('/articles/:id', function(req, res) {
+        db.Note.create(req.body)
+        .then(function(note) {
+            res.json(note)
+        })
+        .catch( e => console.log(e))
+    })
+
+    app.delete('/notes/:id', function(req, res) {
+        db.Note.deleteOne({_id: req.params.id})
+        .then(function(response) {
+            res.sendStatus(200)
+        })
+        .catch(e => console.log(e))
     })
 }

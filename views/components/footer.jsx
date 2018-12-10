@@ -1,20 +1,12 @@
 const React = require('react')
 
 const Footer = (props) => 
-    <div className="uk-section uk-section-secondary uk-light">
+    <div className="footer uk-section uk-section-small uk-section-secondary uk-light">
     <div className="uk-container">
-
-        <h3>Section Secondary</h3>
-
+        <h3>Mongoose Project</h3>
         <div className="uk-grid-match uk-child-width-1-3@m" data-uk-grid>
             <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-            </div>
-            <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-            </div>
-            <div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                <a href="https://github.com/mearatjames/nytScrapping">Github Repository</a>
             </div>
         </div>
 

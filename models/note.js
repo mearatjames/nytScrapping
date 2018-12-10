@@ -3,8 +3,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let NoteSchema = new Schema({
-    title: String,  
-    body: String
+    body: String,
+    article: {
+        type: Schema.Types.ObjectId,
+        ref: "Article"
+    }
 })
 
 const Note = mongoose.model("Note", NoteSchema)
