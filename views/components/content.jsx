@@ -11,7 +11,7 @@ const Content = (props) =>
                 <p>Saved Articles</p>
                 </Fragment>  :
                 <Fragment>
-                <p>New York Times Scrapper</p>
+                <p>New York Times Scraper</p>
                 <button id="scrape" className="uk-button uk-button-default">Scrape New Articles</button>
                 <button id="clear" className="uk-button uk-button-default">Clear All Articles</button>
                 </Fragment>

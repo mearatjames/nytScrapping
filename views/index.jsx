@@ -14,7 +14,7 @@ const Page = (props) =>
         <meta httpEquiv='X-UA-Compatible' content='ie=edge' />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/css/uikit.min.css" />
         <link rel="stylesheet" href="/app.css" />
-        <title>NYT Scrapper</title>
+        <title>NYT Scraper</title>
     </head>
         <body>
             <Nav saved={props.saved} />
