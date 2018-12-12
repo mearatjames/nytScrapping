@@ -54,7 +54,6 @@ document.getElementById('clear').addEventListener('click', function() {
         method: 'DELETE'
     })
     .then(response => {
-        console.log(response)
         document.getElementById('articles').innerHTML = ""
     })
 })
@@ -62,11 +61,9 @@ document.getElementById('clear').addEventListener('click', function() {
 function saveArticle(e) {
     e = e || window.event
     let target = e.target || e.srcElement
-    console.log(target)
     target.disabled = true
     target.innerText = 'Saved!'
     let id = target.getAttribute('data-id')
-    console.log(id)
     fetch('/article', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
@@ -74,8 +71,6 @@ function saveArticle(e) {
             id: id
         })
     })
-    .then(r => {
-        console.log(r)
-    })
+    .then(r => {})
     .catch(e => console.log(e))
 }

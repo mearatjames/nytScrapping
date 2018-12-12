@@ -10,7 +10,7 @@ fetch('/api/savedarticles')
     if (data.length == 0) {
         alert.style.display = "block"
     } else {
-        for (i=0; i <data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             alert.style.display = "none"
             document.getElementById('articles').insertAdjacentHTML("afterbegin", `
             <div class="uk-card uk-card-default uk-width-1-2@m">
@@ -40,14 +40,12 @@ fetch('/api/savedarticles')
 .catch(e => console.log(e))
 
 function removeArticle(id) {
-    console.log(id)
     let event = window.event
     let target = event.target
     fetch('/articles/' + id, {
         method: 'PUT'
     })
     .then(response => {
-        console.log(response)
         target.parentElement.parentElement.parentElement.remove()
     })
 }
@@ -58,7 +56,6 @@ function getNote(id) {
     fetch('/articles/' + id)
     .then(r => r.json())
     .then(data => {
-        console.log(data)
         data.forEach(element => { 
             noteList.insertAdjacentHTML('afterbegin', `
             <div>
@@ -71,7 +68,6 @@ function getNote(id) {
 }
 
 function removeNote(id) {
-    console.log(id)
     let event = window.event
     let target = event.target
     fetch('/notes/' + id, {
@@ -95,7 +91,6 @@ saveNote.addEventListener('click', function() {
     })
     .then(r => r.json())
     .then(data => {
-        console.log(data)
         note.value = ""
         noteList.insertAdjacentHTML('afterbegin', `
         <div>

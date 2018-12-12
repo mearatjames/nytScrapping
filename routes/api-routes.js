@@ -53,7 +53,6 @@ module.exports = function(app) {
     app.put('/article', function (req, res) {
         db.Article.findOneAndUpdate({_id: req.body.id}, {saved: true}, function(err, doc) {
             if (err) throw err
-            console.log(doc)
             res.sendStatus(200)
         })
     })
